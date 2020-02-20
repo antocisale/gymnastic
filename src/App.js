@@ -1,24 +1,66 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useState} from 'react';
 import './App.css';
+import activitiesContext from './activitiesContext';
+import Links from './Sections/Links';
+import SwitchComponent from './Sections/SwitchComponent';
+import {BrowserRouter} from 'react-router-dom';
 
 function App() {
+  const [listAct, setListAct] = useState([
+    {
+      id:"lunes",
+    day: "Lunes",
+    exercises:[]
+  },
+  {
+    id:"martes",
+    day: "Martes",
+    exercises:[]
+  },
+  {
+    id:"miercoles",
+    day: "Miércoles",
+    exercises:[]
+  },
+  {
+    id:"jueves",
+    day: "Jueves",
+    exercises:[]
+  },
+  {
+    id:"viernes",
+    day: "Viernes",
+    exercises:[]
+  },
+]);
+  const [day, setDay] = useState("");
+
+  const addAct = (activity,date)=>{
+    const clone = [...listAct];
+    let index = clone.findIndex(dia =>{
+      return dia.day == date;
+    });
+    clone[index].exercises.push(activity)
+
+    setListAct(...clone)
+    };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <activitiesContext.Provider value={
+        {
+          listAct,
+          setListAct,
+          addAct,
+          day,
+          setDay
+        }
+      }>
+        <BrowserRouter>
+          <Links></Links>
+          <SwitchComponent></SwitchComponent>
+        </BrowserRouter>
+      </activitiesContext.Provider>
     </div>
   );
 }
