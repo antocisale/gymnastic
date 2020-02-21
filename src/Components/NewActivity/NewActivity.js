@@ -9,42 +9,42 @@ import activitiesContext from '../../activitiesContext';
 import './NewActivity.scss';
 
 const NewActivity = () =>{
-    const [exercise, setExercise] = useState("");
-    const [time,setTime] = useState(0);
-    const [timeType, setTimeType] = useState("hs");
-    const [reps, setReps] = useState(0);
-    const {addAct,day} = useContext(InputContext);
+
+    const {addAct,day, exercise, setExercise,time, setTime, timeType, setTimeType, reps, setReps, show, showModal} = useContext(activitiesContext);
+    
+    
+    const showHideClassName = show ? "modal display-block" : "modal display-none";
 
     return(
-        <div className="activity-container">
+        <div className={showHideClassName}>
             <header>
                 <h2>Nueva Actividad</h2>
-                <button>
+                <button onClick={showModal}>
                     <FontAwesomeIcon icon={faTimes}/>
                 </button>
             </header>
             <form id="newActivity">
-                <label for="activity">
+                <label htmlFor="activity">
                     <FontAwesomeIcon icon={faDumbbell}/>
-                    <input type="text" id="activity" placeholder="Actividad" onChange={e=>{setExercise(e.target.value)}}/>
+                    <input type="text" id="activity" value={exercise} placeholder="Actividad" onChange={e=>{setExercise(e.target.value)}}/>
                 </label>
-                <label for="time">
+                <label htmlFor="time">
                     <FontAwesomeIcon icon={faClock}/>
-                    <input type="number" id="time" min="0" placeholder="Tiempo" onChange={e=>{setTime(e.target.value)}}/>
+                    <input type="number" id="time" min="0" value={time} placeholder="Tiempo" onChange={e=>{setTime(e.target.value)}}/>
                 </label>
                 <select name="timeType" onChange={e=>{setTimeType(e.target.value)}}>
                     <option value="hs">Hs</option>
                     <option value="mins">Min</option>
                     <option value="sec">Seg</option>
                 </select>
-                <label for="repetitions" onChange={e=>{setReps(e.target.value)}}>
+                <label htmlFor="repetitions" >
                     <FontAwesomeIcon icon={faRedoAlt}/>
-                    <input type="number" id="repetitions" min="0" placeholder="Cant. Repeticiones"/>
+                    <input type="number" id="repetitions" value={reps} min="0" placeholder="Cant. Repeticiones" onChange={e=>{setReps(e.target.value)}}/>
                 </label>
             </form>
             <footer>
                 <button>Cancelar</button>
-                <input type="submit" form="newActivity" value="Agregar +" onClick={AddAct({exercise, time, timeType, reps},day)}/>
+                <button onClick={()=>{addAct({exercise, time, timeType, reps},day)}} >Agregar +</button>
             </footer>
         </div>            
     )

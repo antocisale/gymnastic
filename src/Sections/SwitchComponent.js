@@ -13,6 +13,8 @@ const SwitchComponent = () =>{
             <Route path="/:id" component={Day} />
             <Route path="/:id" component={Day} /> 
             <Route path="/:id" component={Day} /> 
+            <Route path="/:id" component={Day} /> 
+            <Route path="/:id" component={Day} /> 
         </Switch>
     )
 }

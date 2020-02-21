@@ -1,19 +1,20 @@
-import React,{useContext} from 'react';
+import React,{useState, useContext} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
+import {faEdit} from '@fortawesome/free-solid-svg-icons';
+import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {useParams} from 'react-router-dom';
 import activitiesContext from '../../activitiesContext';
 
 
 const Day = () =>{
-    const {listAct,setDay} = useContext(activitiesContext);
+    const {listAct,setDay, day, showModal} = useContext(activitiesContext);
+    const [lista,setLista] = useState(listAct);
     const {id} = useParams(); 
 
-    const dia = listAct.find(dia=>{
-        return dia.id ==id
-    })
-
+    let dia = lista.find(dia => dia.id == id);
+    
     return(
         <div>
             <header>
@@ -24,30 +25,37 @@ const Day = () =>{
             </header>
             <table>
                 <thead>
-                    <th>Checkbox</th>
-                    <th>Actividad</th>
-                    <th>Tiempo</th>
-                    <th></th>
-                    <th>Repeticiones</th>
-                    <th>Tachito</th>
-                    <th>Lapicito</th>
+                    <tr>
+                        <th>Checkbox</th>
+                        <th>Actividad</th>
+                        <th>Tiempo</th>
+                        <th></th>
+                        <th>Repeticiones</th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody>
                     {dia.exercises.map(act=>{
-                        return <tr>
+                        return <tr key={act.exercise}>
                                 <td></td>
-                                <td>{act.name}</td>
+                                <td>{act.exercise}</td>
                                 <td>{act.time}</td>
                                 <td>{act.timeType}</td>
                                 <td>{act.reps}</td>
-                                <td>Tachito</td>
-                                <td>Lapicito</td>
+                                <td>
+                                    <button>
+                                        <FontAwesomeIcon icon={faTrashAlt}/>
+                                    </button>
+                                    <button>
+                                        <FontAwesomeIcon icon={faEdit}/>
+                                    </button>
+                                </td>
                         </tr>
                     })}
                 </tbody>
             </table>
             <footer>
-                <button onClick={setDay(dia.day)}>
+                <button onClick={()=>{setDay(dia.id);showModal()}}>
                     <FontAwesomeIcon icon={faPlusCircle}/>
                 </button>
             </footer>

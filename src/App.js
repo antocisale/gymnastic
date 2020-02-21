@@ -4,6 +4,7 @@ import activitiesContext from './activitiesContext';
 import Links from './Sections/Links';
 import SwitchComponent from './Sections/SwitchComponent';
 import {BrowserRouter} from 'react-router-dom';
+import NewActivity from './Components/NewActivity/NewActivity';
 
 function App() {
   const [listAct, setListAct] = useState([
@@ -25,24 +26,52 @@ function App() {
   {
     id:"jueves",
     day: "Jueves",
-    exercises:[]
+    exercises:[{
+      exercise: "hola",
+      time: "10",
+      timeType:"mins",
+      reps: "2"
+    }]
   },
   {
     id:"viernes",
     day: "Viernes",
     exercises:[]
   },
+  {
+    id:"sabado",
+    day: "Sábado",
+    exercises:[]
+  },
+  {
+    id:"domingo",
+    day: "Domingo",
+    exercises:[]
+  },
 ]);
-  const [day, setDay] = useState("");
+  const [day, setDay] = useState("lunes");
+  const [exercise, setExercise] = useState("");
+  const [time,setTime] = useState(0);
+  const [timeType, setTimeType] = useState("hs");
+  const [reps, setReps] = useState(0);
+  const [show,setShow] = useState("false")
+
+  const showModal = ()=>{
+    setShow(!show);
+    console.log(show)
+  }
 
   const addAct = (activity,date)=>{
-    const clone = [...listAct];
-    let index = clone.findIndex(dia =>{
-      return dia.day == date;
+    let clon = [...listAct];
+    let index = clon.findIndex(dia =>{
+      return dia.id == date;
     });
-    clone[index].exercises.push(activity)
+    clon[index].exercises.push(activity);
 
-    setListAct(...clone)
+    setListAct(clon);
+    setExercise("");
+    setTime("");
+    setReps("");
     };
 
   return (
@@ -53,16 +82,30 @@ function App() {
           setListAct,
           addAct,
           day,
-          setDay
+          setDay,
+          exercise, 
+          setExercise,
+          time,
+          setTime,
+          timeType,
+          setTimeType,
+          reps, 
+          setReps,
+          showModal,
+          show
         }
       }>
         <BrowserRouter>
           <Links></Links>
           <SwitchComponent></SwitchComponent>
         </BrowserRouter>
+        <NewActivity></NewActivity>
       </activitiesContext.Provider>
     </div>
   );
 }
 
 export default App;
+
+
+

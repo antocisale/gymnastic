@@ -22,6 +22,12 @@ const Links = ()=>{
             <Link to="/viernes">
                 Viernes
             </Link>
+            <Link to="/sabado">
+                Sábado
+            </Link>
+            <Link to="/domingo">
+                Domingo
+            </Link>
         </nav>
 
     )
