@@ -6,6 +6,9 @@ import {faEdit} from '@fortawesome/free-solid-svg-icons';
 import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {useParams} from 'react-router-dom';
 import activitiesContext from '../../activitiesContext';
+import logo from '../../images/home.png';
+import './Day.scss';
+import {Link} from 'react-router-dom';
 
 
 const Day = () =>{
@@ -16,20 +19,22 @@ const Day = () =>{
     let dia = lista.find(dia => dia.id == id);
     
     return(
-        <div>
+        <div className="day">
             <header>
+                <div>
+                <img src={logo}/>
                 <h2>{dia.day}</h2>
-                <button>
+                </div>
+                <Link to='./'>
                     <FontAwesomeIcon icon={faTimes}/>
-                </button>
+                </Link>
             </header>
             <table>
                 <thead>
                     <tr>
-                        <th>Checkbox</th>
-                        <th>Actividad</th>
-                        <th>Tiempo</th>
                         <th></th>
+                        <th>Actividad</th>
+                        <th colSpan="2">Tiempo</th>
                         <th>Repeticiones</th>
                         <th></th>
                     </tr>
@@ -37,7 +42,11 @@ const Day = () =>{
                 <tbody>
                     {dia.exercises.map(act=>{
                         return <tr key={act.exercise}>
-                                <td></td>
+                                <td>
+                                    <label>
+                                    <input type="checkbox"></input>
+                                    </label>
+                                </td>
                                 <td>{act.exercise}</td>
                                 <td>{act.time}</td>
                                 <td>{act.timeType}</td>

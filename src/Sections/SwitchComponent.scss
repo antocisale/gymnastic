@@ -1,0 +1,12 @@
+.home{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:85%;
+    flex-direction:column;
+    background-color: lighten(#fff591,10);
+    h1,h2{
+        color: #fff;
+        text-shadow: 2px 3px 2px #474747;
+    }
+}

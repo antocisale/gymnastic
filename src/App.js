@@ -58,7 +58,6 @@ function App() {
 
   const showModal = ()=>{
     setShow(!show);
-    console.log(show)
   }
 
   const addAct = (activity,date)=>{
@@ -75,7 +74,7 @@ function App() {
     };
 
   return (
-    <div>
+    <div className="main">
         <activitiesContext.Provider value={
         {
           listAct,
@@ -95,7 +94,7 @@ function App() {
           show
         }
       }>
-        <BrowserRouter>
+        <BrowserRouter >
           <Links></Links>
           <SwitchComponent></SwitchComponent>
         </BrowserRouter>

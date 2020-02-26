@@ -1,11 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './Links.scss';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faHome} from '@fortawesome/free-solid-svg-icons';
 
 const Links = ()=>{
     return(
         <nav className="nav">
             <Link to="/">
-                Home
+                <FontAwesomeIcon icon={faHome}/>
             </Link>
             <Link to="/lunes">
                 Lunes
