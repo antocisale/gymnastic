@@ -12,7 +12,7 @@ import {Link} from 'react-router-dom';
 
 
 const Day = () =>{
-    const {listAct,setDay, day, showModal,delAct,setCurrentModal, setExercise} = useContext(activitiesContext);
+    const {listAct,setDay, day, showModal,delAct,setCurrentModal, setExercise, setEditIndex,setTime, setTimeType, setReps,} = useContext(activitiesContext);
     const [lista,setLista] = useState(listAct);
     const {id} = useParams(); 
 
@@ -40,14 +40,14 @@ const Day = () =>{
                     </tr>
                 </thead>
                 <tbody>
-                    {dia.exercises.map(act=>{
+                    {dia.exercises.map((act, index)=>{
                         return <tr key={act.exercise}>
                                 <td>
                                     <label>
                                     <input type="checkbox"></input>
                                     </label>
                                 </td>
-                                <td>{act.exercise}/></td>
+                                <td>{act.exercise}</td>
                                 <td>{act.time}</td>
                                 <td>{act.timeType}</td>
                                 <td>{act.reps}</td>
@@ -55,7 +55,13 @@ const Day = () =>{
                                     <button onClick={()=>{delAct(act.exercise,dia.id)}}>
                                         <FontAwesomeIcon icon={faTrashAlt}/>
                                     </button>
-                                    <button onClick={()=>{setExercise(act.exercise); showModal('EDITAR')}}>
+                                    <button onClick={()=>{setDay(dia.id); 
+                                        setExercise(act.exercise); 
+                                        setTime(act.time);
+                                        setTimeType(act.timeType);
+                                        setEditIndex(index);
+                                        setReps(act.reps);
+                                        showModal('EDITAR')}}>
                                         <FontAwesomeIcon icon={faEdit}/>
                                     </button>
                                 </td>

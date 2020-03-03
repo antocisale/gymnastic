@@ -58,6 +58,7 @@ function App() {
   const [reps, setReps] = useState(0);
   const [show,setShow] = useState(false);
   const [currentModal, setCurrentModal] = useState(null);
+  const [editIndex, setEditIndex] = useState(-1);
 
   const showModal = (modal)=>{
     setShow(!show);
@@ -89,20 +90,11 @@ function App() {
       setListAct(clon);
     };
 
-    const editAct = (NewExercise, time, timeType, reps,date) =>{  ///falta editar porque necesito que loopee entre los elementos dentro del array exercises
-      let index = listAct.find(dia =>{
-        if (dia.id == date){
-          for (let i=0; i<dia.exercises.length; i++){
-            return dia.exercises[i] == exercise
-          }
-        };
+    const editAct = (index, NewExercise,date) =>{
+      let dia = listAct.find(day =>{
+        return day.id ==date;
       });
-      console.log(index)
-      index.exercise = NewExercise;
-      index.time = time;
-      index.timeType = timeType;
-      index.reps = reps;
-
+      dia.exercises.splice(index,1,NewExercise);
     }
 
   return (
@@ -127,7 +119,9 @@ function App() {
           delAct,
           currentModal, 
           setCurrentModal,
-          editAct
+          editAct,
+          editIndex,
+          setEditIndex
         }
       }>
         <BrowserRouter >
