@@ -12,7 +12,7 @@ import {Link} from 'react-router-dom';
 
 
 const Day = () =>{
-    const {listAct,setDay, day, showModal} = useContext(activitiesContext);
+    const {listAct,setDay, day, showModal,delAct,setCurrentModal, setExercise} = useContext(activitiesContext);
     const [lista,setLista] = useState(listAct);
     const {id} = useParams(); 
 
@@ -47,15 +47,15 @@ const Day = () =>{
                                     <input type="checkbox"></input>
                                     </label>
                                 </td>
-                                <td>{act.exercise}</td>
+                                <td>{act.exercise}/></td>
                                 <td>{act.time}</td>
                                 <td>{act.timeType}</td>
                                 <td>{act.reps}</td>
                                 <td>
-                                    <button>
+                                    <button onClick={()=>{delAct(act.exercise,dia.id)}}>
                                         <FontAwesomeIcon icon={faTrashAlt}/>
                                     </button>
-                                    <button>
+                                    <button onClick={()=>{setExercise(act.exercise); showModal('EDITAR')}}>
                                         <FontAwesomeIcon icon={faEdit}/>
                                     </button>
                                 </td>
@@ -64,7 +64,7 @@ const Day = () =>{
                 </tbody>
             </table>
             <footer>
-                <button onClick={()=>{setDay(dia.id);showModal()}}>
+                <button onClick={()=>{setDay(dia.id);showModal('AGREGAR');}}>
                     <FontAwesomeIcon icon={faPlusCircle}/>
                 </button>
             </footer>

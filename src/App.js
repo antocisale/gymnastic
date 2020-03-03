@@ -4,7 +4,9 @@ import activitiesContext from './activitiesContext';
 import Links from './Sections/Links';
 import SwitchComponent from './Sections/SwitchComponent';
 import {BrowserRouter} from 'react-router-dom';
-import NewActivity from './Components/NewActivity/NewActivity';
+import ModalConductor from './Components/Modal/ModalConductor';
+
+
 
 function App() {
   const [listAct, setListAct] = useState([
@@ -54,10 +56,12 @@ function App() {
   const [time,setTime] = useState(0);
   const [timeType, setTimeType] = useState("hs");
   const [reps, setReps] = useState(0);
-  const [show,setShow] = useState("false")
+  const [show,setShow] = useState(false);
+  const [currentModal, setCurrentModal] = useState(null);
 
-  const showModal = ()=>{
+  const showModal = (modal)=>{
     setShow(!show);
+    setCurrentModal(modal);
   }
 
   const addAct = (activity,date)=>{
@@ -72,6 +76,34 @@ function App() {
     setTime("");
     setReps("");
     };
+  
+    const delAct = (activ,date) =>{
+      let clon = [...listAct];
+      let index = clon.findIndex(dia =>{
+        return dia.id == date;
+      });
+      let act = clon[index].exercises.findIndex(act =>{return act.exercise==activ});
+      console.log(act)
+      clon[index].exercises.splice(act,1);
+      console.log(clon)
+      setListAct(clon);
+    };
+
+    const editAct = (NewExercise, time, timeType, reps,date) =>{  ///falta editar porque necesito que loopee entre los elementos dentro del array exercises
+      let index = listAct.find(dia =>{
+        if (dia.id == date){
+          for (let i=0; i<dia.exercises.length; i++){
+            return dia.exercises[i] == exercise
+          }
+        };
+      });
+      console.log(index)
+      index.exercise = NewExercise;
+      index.time = time;
+      index.timeType = timeType;
+      index.reps = reps;
+
+    }
 
   return (
     <div className="main">
@@ -91,14 +123,19 @@ function App() {
           reps, 
           setReps,
           showModal,
-          show
+          show,
+          delAct,
+          currentModal, 
+          setCurrentModal,
+          editAct
         }
       }>
         <BrowserRouter >
           <Links></Links>
           <SwitchComponent></SwitchComponent>
         </BrowserRouter>
-        <NewActivity></NewActivity>
+        <ModalConductor></ModalConductor>
+
       </activitiesContext.Provider>
     </div>
   );

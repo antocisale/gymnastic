@@ -8,7 +8,7 @@ import activitiesContext from '../../activitiesContext';
 
 import './NewActivity.scss';
 
-const NewActivity = () =>{
+const Modal = ({title, variant, children}) =>{
 
     const {addAct,day, exercise, setExercise,time, setTime, timeType, setTimeType, reps, setReps, show, showModal} = useContext(activitiesContext);
     
@@ -16,10 +16,10 @@ const NewActivity = () =>{
     const showHideClassName = show ? "modal display-block" : "modal display-none";
 
     return(
-        <div className={showHideClassName}>
+        <div className={showHideClassName} variant = {variant}>
             <div className="addAct">
                 <header>
-                    <h2>Nueva Actividad</h2>
+                    <h2>{title}</h2>
                     <button onClick={showModal}>
                         <FontAwesomeIcon icon={faTimes}/>
                     </button>
@@ -45,7 +45,7 @@ const NewActivity = () =>{
                 </form>
                 <footer>
                     <button>Cancelar</button>
-                    <button onClick={()=>{addAct({exercise, time, timeType, reps},day); showModal()}} >Agregar +</button>
+                    {children}
                 </footer>
             </div>
         </div>            
@@ -53,4 +53,4 @@ const NewActivity = () =>{
 }
 
 
-export default NewActivity;
+export default Modal;
