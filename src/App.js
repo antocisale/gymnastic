@@ -28,12 +28,7 @@ function App() {
   {
     id:"jueves",
     day: "Jueves",
-    exercises:[{
-      exercise: "hola",
-      time: "10",
-      timeType:"mins",
-      reps: "2"
-    }]
+    exercises:[]
   },
   {
     id:"viernes",

@@ -4,7 +4,7 @@ import ModalWrapper from './ModalWrapper';
 
 
 const NewActivity = props => {
-    const {day, exercise, time, timeType, reps, show, showModal,editAct,editIndex} = useContext(activitiesContext);
+    const {day, exercise, time, timeType, reps, showModal,editAct,editIndex} = useContext(activitiesContext);
 
     return (
         <ModalWrapper

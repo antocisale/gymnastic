@@ -52,6 +52,39 @@
     form{
         display:flex;
         flex-direction:column;
+        width: 50%;
+        label{
+            width:100%;
+            margin:10px;
+            display: flex;
+            justify-content: space-between;
+
+        };
+        svg{
+            font-size:18px;
+            padding: 6px;
+            border-radius:50%;
+            background-color: #f35588;
+            color: #fff;
+        };
+        input{
+            width:220px;
+            border-radius: 20px;
+            border-style: outset;
+            border-color: #f35588;
+            border-width: 1px;
+            height:28px;
+            padding-left:10px;
+            margin-left:5px;
+        }
+        select{
+            border-radius: 20px;
+            border-style: outset;
+            border-color: #f35588;
+        }
+        #time{
+            width:155px;
+        }
     }
     footer{
         display: flex;

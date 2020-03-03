@@ -12,7 +12,7 @@ import {Link} from 'react-router-dom';
 
 
 const Day = () =>{
-    const {listAct,setDay, day, showModal,delAct,setCurrentModal, setExercise, setEditIndex,setTime, setTimeType, setReps,} = useContext(activitiesContext);
+    const {listAct,setDay, day, showModal,delAct,setExercise, setEditIndex,setTime, setTimeType, setReps} = useContext(activitiesContext);
     const [lista,setLista] = useState(listAct);
     const {id} = useParams(); 
 
