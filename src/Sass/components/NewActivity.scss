@@ -24,24 +24,24 @@
     justify-content: space-between;
     width:45%;
     height:300px;
-    background-color: #fff;
+    background-color: $white;
     header{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #f35588;
+        background-color: $pink;
         width:100%;
         height:80px;
         h2{
             padding-left:50px;
-            color:#fff;
+            color:$white;
             font-size:28px;
         }
         button{
         background: transparent;
         margin-right:35px;
         font-size:20px;
-        color: #e5e5e5;
+        color: $grey;
         border:none;
         &:hover{
             transform: scale(1.5);
@@ -64,14 +64,14 @@
             font-size:18px;
             padding: 6px;
             border-radius:50%;
-            background-color: #f35588;
-            color: #fff;
+            background-color: $pink;
+            color: $white;
         };
         input{
             width:220px;
             border-radius: 20px;
             border-style: outset;
-            border-color: #f35588;
+            border-color: $pink;
             border-width: 1px;
             height:28px;
             padding-left:10px;
@@ -80,18 +80,48 @@
         select{
             border-radius: 20px;
             border-style: outset;
-            border-color: #f35588;
+            border-color: $pink;
+            width: 55px;
+
+
         }
         #time{
             width:155px;
+            margin-left: 18px;
         }
     }
     footer{
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        background-color: #f35588;
+        background-color: $pink;
         width:100%;
-        height:45px;
+        height:65px;
+        button{
+            width:80px;
+            background-color: $green;
+            margin-right: 20px;
+            height: 40px;
+            border-radius:20px;
+            font-size:12px;
+            text-align:center;
+            color: $white;
+            font-weight:700;
+            border: none;
+            padding:10px;
+            transform: background-color 2s ease;
+            box-shadow: 1px 5px darken($green,20);;
+            &:hover{
+                background-color: darken($green,20);
+                transform: background-color 2s ease;
+                cursor:pointer;
+            }
+            &:active{
+                background-color: darken($green,20);
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+            }
+        }
     }
+   
 }

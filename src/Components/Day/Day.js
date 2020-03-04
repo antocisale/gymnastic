@@ -4,12 +4,13 @@ import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
 import {faEdit} from '@fortawesome/free-solid-svg-icons';
 import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {faCircle} from '@fortawesome/free-regular-svg-icons';
+import {faCheckCircle} from '@fortawesome/free-solid-svg-icons';
 import {useParams} from 'react-router-dom';
 import activitiesContext from '../../activitiesContext';
 import logo from '../../images/home.png';
-import './Day.scss';
 import {Link} from 'react-router-dom';
-
+import '../../App.scss';
 
 const Day = () =>{
     const {listAct,setDay, day, showModal,delAct,setExercise, setEditIndex,setTime, setTimeType, setReps} = useContext(activitiesContext);
@@ -43,8 +44,10 @@ const Day = () =>{
                     {dia.exercises.map((act, index)=>{
                         return <tr key={act.exercise}>
                                 <td>
-                                    <label>
-                                    <input type="checkbox"></input>
+                                    <label className="check">
+                                        <FontAwesomeIcon icon={faCircle} className="unchecked"/>
+                                        <input type="checkbox" className="checkbox"></input>
+                                        <FontAwesomeIcon icon={faCheckCircle} className="checked"/>
                                     </label>
                                 </td>
                                 <td>{act.exercise}</td>

@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import Day from '../Components/Day/Day';
 import home from '../images/home.png';
-import './SwitchComponent.scss';
+import '../App.scss';
 
 
 const SwitchComponent = () =>{

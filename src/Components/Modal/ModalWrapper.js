@@ -6,7 +6,7 @@ import {faClock} from '@fortawesome/free-solid-svg-icons';
 import {faRedoAlt} from '@fortawesome/free-solid-svg-icons';
 import activitiesContext from '../../activitiesContext';
 
-import './NewActivity.scss';
+import '../../App.scss';
 
 const ModalWrapper = props => {
     const {exercise, setExercise,time, setTime, setTimeType, reps, setReps,show, showModal} = useContext(activitiesContext);
@@ -43,7 +43,6 @@ const ModalWrapper = props => {
                             </label>
                         </form>
                 <footer>
-                    <button onClick={showModal}>Cancelar</button>
                     {props.children}
                 </footer>
             </div>

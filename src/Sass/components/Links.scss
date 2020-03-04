@@ -3,24 +3,30 @@
     flex-direction: column;
     width:15%;
     height:100vh;
-    background-color: #f35588;
+    background-color: $pink;
     transition: background-color 1s ease;
     a{
         text-decoration: none;
-        color: #fff;
+        color: $white;
         height: 60px;
         text-align: center;
-        border: 1px solid lighten(#f35588,10);
+        border: 1px solid lighten($pink,10);
         line-height: 60px;
         font-weight:700;
         font-size:20px;
         &:hover{
-            background-color: darken(#f35588,20);
+            background-color: darken($pink,20);
             transition: background-color 1s ease;
         }
         &:focus{
-            background-color: darken(#f35588,20);
+            background-color: darken($pink,20);
         }
 
     }
 }
+
+.main{
+    display:flex;
+    justify-content: stretch;
+  
+  }

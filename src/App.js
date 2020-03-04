@@ -1,10 +1,11 @@
 import React,{useState} from 'react';
-import './App.css';
+import './App.scss';
 import activitiesContext from './activitiesContext';
 import Links from './Sections/Links';
 import SwitchComponent from './Sections/SwitchComponent';
 import {BrowserRouter} from 'react-router-dom';
 import ModalConductor from './Components/Modal/ModalConductor';
+import useSwitchBoolean from './Hooks/SwitchBoolean';
 
 
 
@@ -51,12 +52,12 @@ function App() {
   const [time,setTime] = useState(0);
   const [timeType, setTimeType] = useState("hs");
   const [reps, setReps] = useState(0);
-  const [show,setShow] = useState(false);
+  const [show,toggleShow] = useSwitchBoolean(false);
   const [currentModal, setCurrentModal] = useState(null);
   const [editIndex, setEditIndex] = useState(-1);
 
   const showModal = (modal)=>{
-    setShow(!show);
+    toggleShow();
     setCurrentModal(modal);
   }
 
