@@ -15,11 +15,11 @@ const Links = ()=>{
     };
 
     return(
-        <div>
+        <div className="nav">
             <button onClick={showMenu}>
-                <FontAwesomeIcon icon={faHome}/>
+                <FontAwesomeIcon icon={faBars}/>
             </button>
-            <nav className="nav" {...wrapper}>
+            <nav className="nav wrapper">
                 <Link to="/">
                     <FontAwesomeIcon icon={faHome}/>
                 </Link>

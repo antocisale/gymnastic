@@ -5,6 +5,9 @@
     height:100vh;
     background-color: $pink;
     transition: background-color 1s ease;
+    .wrapper{
+        width:100%;
+    }
     a{
         text-decoration: none;
         color: $white;
@@ -28,5 +31,4 @@
 .main{
     display:flex;
     justify-content: stretch;
-  
-  }
+}

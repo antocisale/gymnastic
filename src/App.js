@@ -59,7 +59,7 @@ function App() {
   const showModal = (modal)=>{
     toggleShow();
     setCurrentModal(modal);
-  }
+  };
 
   const addAct = (activity,date)=>{
     let clon = [...listAct];
