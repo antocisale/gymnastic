@@ -1,3 +1,5 @@
+@import '../../Sass/common/mixins';
+
 .nav{
     display:flex;
     flex-direction: column;
@@ -6,7 +8,10 @@
     background-color: $pink;
     transition: background-color 1s ease;
     .wrapper{
+        visibility: hidden;
         width:100%;
+        height:0;
+        transition: height 1s ease !important;
     }
     a{
         text-decoration: none;
@@ -28,7 +33,60 @@
     }
 }
 
+.shown{
+    visibility: visible !important;
+    height:100vh !important;
+    transition: height 1s ease !important;
+}
 .main{
     display:flex;
     justify-content: stretch;
+}
+
+@include tablet {
+    .main{
+        flex-direction:column;
+    }
+    .nav{
+        height:40px;
+        width:100%;
+        align-items: center;
+    }
+    .wrapper{
+        width:100%;
+        z-index:1;
+        a{
+            width:100%;
+        }
+    }
+
+}
+
+@include phone {
+    .main{
+        flex-direction:column;
+    }
+    .nav{
+        height:40px;
+        width:100%;
+        align-items: center;
+    }
+    .wrapper{
+        width:100%;
+        z-index:1;
+        a{
+            width:100%;
+        }
+    }
+
+}
+
+@include desktop{
+    .wrapper{
+        visibility: visible !important; 
+        height:100%;
+    }
+    .nav button{
+        display:none;
+    }
 }

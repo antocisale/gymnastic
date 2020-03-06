@@ -1,3 +1,5 @@
+@import '../../Sass/common/mixins';
+
 .day{
     display:flex;
     width:85%;
@@ -144,5 +146,17 @@
                         transform: translateY(4px);
                     }
                 }
+    }
+}
+
+@include tablet{
+    .day{
+        width:100%;
+    }
+}
+
+@include phone{
+    .day{
+        width:100%;
     }
 }

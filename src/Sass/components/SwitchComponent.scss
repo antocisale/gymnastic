@@ -1,3 +1,5 @@
+@import '../../Sass/common/mixins';
+
 .home{
     display:flex;
     align-items: center;
@@ -8,5 +10,20 @@
     h1,h2{
         color: $white;
         text-shadow: 2px 3px 2px #474747;
+    }
+}
+
+@include tablet{
+    .home{
+        width:100%;
+        overflow: hidden;
+    }
+}
+
+
+@include phone{
+    .home{
+        width:100%;
+        overflow: hidden;
     }
 }

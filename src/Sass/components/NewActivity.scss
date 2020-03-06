@@ -1,3 +1,5 @@
+@import '../../Sass/common/mixins';
+
 .modal {
     position: fixed;
     top: 0;
@@ -124,4 +126,22 @@
         }
     }
    
+}
+
+@include tablet{
+    .modal{
+        width:100%;
+    }
+    .addAct{
+        width:85%;
+    }
+}
+
+@include phone{
+    .modal{
+        width:100%;
+    }
+    .addAct{
+        width:85%;
+    }
 }
